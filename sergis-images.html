@@ -1,0 +1,1328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sergi's Images — Architectural Metals &amp; Glass | Brooklyn, NY</title>
+<meta name="description" content="Full-service architectural metal & glass company in Brooklyn — curtain walls, storefronts, custom glass, mirrors, railings, and more. In Red Hook since 1991." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Montserrat', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        colors: {
+          cream: { 50:'#FBFAF6', 100:'#F5F2E9' },
+          ink:   { 100:'#E2E8F0', 300:'#CBD5E1', 400:'#94A3B8', 500:'#64748B', 600:'#475569', 700:'#334155', 800:'#1E293B', 900:'#0F172A', 950:'#0A1428' },
+          brand: { 500:'#2563EB', 600:'#1D4ED8', 700:'#1E3A8A' },
+          glacier:{ 300:'#93C5FD' },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  * { -webkit-font-smoothing:antialiased; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Montserrat, system-ui, sans-serif; background:#FBFAF6; color:#0A1428; overflow-x:hidden; }
+  .container-x { max-width: 1280px; margin-inline:auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
+  .eyebrow { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; }
+  /* Editorial eyebrow row — numeral + rule line + label (matches <Eyebrow> component) */
+  .eb-row { display:inline-flex; align-items:center; gap:1rem; }
+  .eb-row .eb-num { color:#0A1428; font-variant-numeric:tabular-nums; font-weight:500; }
+  .eb-row .eb-rule { display:block; height:1px; width:2.5rem; background:#CBD5E1; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .h-display-1 { font-size: clamp(2.5rem, 7vw, 6rem); line-height:.98; letter-spacing:-.035em; font-weight:800; }
+  .h-display-2 { font-size: clamp(2rem, 4.5vw, 3.5rem); line-height:1.05; letter-spacing:-.03em; font-weight:700; }
+  .h-display-3 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height:1.1; letter-spacing:-.02em; font-weight:700; }
+  .h-display-4 { font-size: clamp(1.25rem, 2vw, 1.5rem); line-height:1.2; font-weight:700; }
+  .text-lead { font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height:1.55; }
+  .text-feature { font-size: clamp(1.0625rem, 1.3vw, 1.25rem); }
+  .text-body { font-size: 16px; line-height:1.65; }
+  .text-micro { font-size: 12px; letter-spacing: .04em; }
+  .editorial-num { font-family:'JetBrains Mono',monospace; color:#475569; font-weight:600; }
+  .editorial-link { position:relative; }
+  .editorial-link::after { content:''; position:absolute; left:0; bottom:-1px; height:1px; width:100%; background:currentColor; transform-origin:right; transform:scaleX(0); transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+  .editorial-link:hover::after { transform-origin:left; transform:scaleX(1); }
+  ::selection { background:#93C5FD; color:#0A1428; }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(10,20,40,.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10,20,40,.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Loader */
+  #loader { position:fixed; inset:0; z-index:100; background:#0A1428; display:grid; place-items:center; transition: opacity .8s cubic-bezier(.2,.8,.2,1), visibility .8s; }
+  #loader.gone { opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-mark-wrap { animation: loaderFade 1.6s ease-in-out infinite; }
+  .loader-logo { width: clamp(220px, 32vw, 360px); height: auto; display:block; }
+  @keyframes loaderFade { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.55; transform:scale(.97)} }
+
+  /* Navbar */
+  #navbar { transition: transform .4s cubic-bezier(.2,.8,.2,1), background .3s, border-color .3s, box-shadow .3s; }
+  #navbar.hidden-nav { transform: translateY(-110%); }
+  #navbar.scrolled, body.menu-open #navbar { background: rgba(251,250,246,.95); backdrop-filter: blur(12px); border-bottom-color: rgba(10,20,40,.1); }
+  /* While mobile menu is open, always show navbar so user can close it */
+  body.menu-open #navbar { transform: none !important; }
+  /* Lock scroll when mobile menu open */
+  html.menu-lock, html.menu-lock body { overflow: hidden; }
+  /* Hamburger X animation */
+  #m-toggle .bar { position:absolute; left:0; right:0; height:1px; background:#0A1428; transition: top .3s, bottom .3s, transform .3s; }
+  #m-toggle .bar1 { top:0; }
+  #m-toggle .bar2 { bottom:0; }
+  #m-toggle.is-open .bar1 { top:50%; transform: rotate(45deg); }
+  #m-toggle.is-open .bar2 { bottom:auto; top:50%; transform: rotate(-45deg); }
+  /* Mobile menu */
+  #m-menu { visibility: hidden; opacity: 0; transform: translateY(-8px); transition: opacity .25s ease, transform .25s ease, visibility 0s .25s; }
+  #m-menu.is-open { visibility: visible; opacity: 1; transform: none; transition: opacity .25s ease, transform .25s ease, visibility 0s 0s; }
+  .nav-link { position:relative; font-size:13px; letter-spacing:.06em; text-transform:uppercase; font-weight:500; color:#475569; transition:color .3s; }
+  .nav-link::after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:1px; background:#0A1428; transform-origin:left; transform:scaleX(0); transition:transform .35s cubic-bezier(.2,.8,.2,1); }
+  .nav-link:hover, .nav-link.active { color:#0A1428; }
+  .nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); }
+  .logo-oval { display:inline-flex; align-items:center; justify-content:center; width:42px; height:30px; border:1.5px solid #0A1428; border-radius:9999px; font-weight:800; font-size:13px; color:#0A1428; transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+  .logo-oval:hover { transform:rotate(-4deg) scale(1.05); }
+
+  /* Buttons */
+  .btn-primary {
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:14px 28px; border-radius:10px; background:#0A1428; color:#FBFAF6;
+    font-weight:600; font-size:15px; position:relative; overflow:hidden;
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
+  }
+  .btn-primary::before {
+    content:''; position:absolute; inset:0; background:linear-gradient(120deg, transparent, rgba(255,255,255,.12), transparent);
+    transform: translateX(-100%); transition: transform .6s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -10px rgba(10,20,40,.35); }
+  .btn-primary:hover::before { transform: translateX(100%); }
+  .btn-primary.btn-sm { padding:10px 18px; font-size:13px; }
+  .btn-link { display:inline-flex; align-items:center; gap:8px; font-weight:600; color:#0A1428; position:relative; padding-bottom:3px; }
+  .btn-link::after { content:''; position:absolute; left:0; bottom:0; height:1px; width:100%; background:currentColor; transform-origin:right; transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+  .btn-link:hover::after { transform-origin:left; transform:scaleX(1.05); }
+  .btn-link span.arrow { display:inline-block; transition: transform .3s; }
+  .btn-link:hover span.arrow { transform: translateX(4px); }
+
+  /* Form fields */
+  .field { width:100%; border:1px solid rgba(15,23,42,.18); background:#fff; padding:14px 16px; border-radius:12px; color:#0A1428; font-size:15px; transition:border-color .2s, box-shadow .2s; }
+  .field::placeholder { color:#64748B; }
+  .field:focus { outline:none; border-color:#2563EB; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+
+  /* Filter chips */
+  .filter-chip { padding:9px 20px; border-radius:9999px; border:1px solid rgba(15,23,42,.15); background:#fff; font-size:13px; font-weight:600; color:#475569; cursor:pointer; transition:all .25s cubic-bezier(.2,.8,.2,1); }
+  .filter-chip:hover { color:#0A1428; border-color:rgba(15,23,42,.5); transform:translateY(-1px); }
+  .filter-chip.active { background:#0A1428; color:#FBFAF6; border-color:#0A1428; transform:translateY(-1px); }
+
+  /* Service filter rail (services page) — desktop: text links with underline */
+  .svc-filter { position:relative; font-size:14px; color:#64748B; transition:color .3s, background .3s, border-color .3s; cursor:pointer; padding-bottom:6px; background:transparent; border:0; font-family:inherit; }
+  .svc-filter:hover { color:#0A1428; }
+  .svc-filter.active { color:#0A1428; font-weight:600; }
+  .svc-filter.active::after { content:''; position:absolute; left:0; right:0; bottom:-1px; height:1px; background:#0A1428; }
+  /* Mobile: convert to rounded pill chips matching portfolio filter */
+  @media (max-width: 767px) {
+    #svc-filters { gap: 0.5rem !important; padding-bottom: 1.25rem !important; }
+    #svc-filters > span:first-child { display:none; } /* hide "Filter" label */
+    .svc-filter { padding: 9px 18px; border-radius: 9999px; border: 1px solid rgba(15,23,42,.15); background:#fff; font-size: 13px; font-weight: 600; color:#475569; padding-bottom: 9px; }
+    .svc-filter:hover { border-color: rgba(15,23,42,.5); transform: translateY(-1px); }
+    .svc-filter.active { background:#0A1428; color:#FBFAF6; border-color:#0A1428; }
+    .svc-filter.active::after { display:none; } /* no underline on chip */
+  }
+
+  /* Service row (expandable list) — body collapsed until .open */
+  .svc-row { border-bottom: 1px solid rgba(10,20,40,.1); }
+  .svc-row .svc-toggle { width:100%; text-align:left; padding:28px 0; cursor:pointer; transition:color .3s; background:transparent; border:0; font-family:inherit; }
+  .svc-row .svc-plus { transition: transform .5s cubic-bezier(.2,.8,.2,1); color:#94A3B8; }
+  .svc-row.open .svc-plus { transform: rotate(45deg); color:#0A1428; }
+  /* Body hidden by default, revealed (with fade) only when .open */
+  .svc-row .svc-body { display: none; }
+  .svc-row.open .svc-body { display: block; animation: svcReveal .4s cubic-bezier(.2,.8,.2,1); }
+  @keyframes svcReveal {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Portfolio cards */
+  .portfolio-card { transition: opacity .4s cubic-bezier(.2,.8,.2,1), transform .4s cubic-bezier(.2,.8,.2,1); }
+  .portfolio-card .img-wrap { overflow:hidden; border-radius:14px; }
+  .portfolio-card img { transition: transform 1.1s cubic-bezier(.2,.8,.2,1); will-change: transform; }
+  .portfolio-card:hover img { transform: scale(1.06); }
+  .portfolio-card.is-out { opacity:0; transform:scale(.96); pointer-events:none; }
+
+  /* Capability card */
+  .cap-card { position:relative; transition: transform .35s cubic-bezier(.2,.8,.2,1); border-top:1px solid rgba(10,20,40,.15); padding: 40px 24px 40px 0; display:block; }
+  .cap-card:hover { transform: translateX(2px); }
+  .cap-card .cap-arrow { display:inline-block; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .cap-card:hover .cap-arrow { transform: translateX(4px); }
+
+  /* Marquee */
+  .marquee { display:flex; width:max-content; animation: marquee 40s linear infinite; will-change: transform; }
+  .marquee:hover { animation-play-state: paused; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Reveal animations */
+  [data-reveal] { opacity:0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); transition-delay: var(--rd, 0ms); will-change: opacity, transform; }
+  [data-reveal].in { opacity:1; transform:none; }
+  [data-reveal="left"] { transform: translateX(-32px); }
+  [data-reveal="left"].in { transform:none; }
+  [data-reveal="right"] { transform: translateX(32px); }
+  [data-reveal="right"].in { transform:none; }
+  [data-reveal="scale"] { transform: scale(.96); }
+  [data-reveal="scale"].in { transform: scale(1); }
+
+  /* Page switching — only one .page visible at a time */
+  .page { display:none; overflow-x: clip; }
+  .page.active { display:block; animation: pageIn .55s cubic-bezier(.2,.8,.2,1); }
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .page-section { position:relative; }
+
+  /* Hero grid drift */
+  .hero-grid { animation: gridDrift 30s ease-in-out infinite alternate; }
+  @keyframes gridDrift { from{transform:translate(0,0)} to{transform:translate(8px,-12px)} }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-mark-wrap">
+    <svg viewBox="0 0 360 140" class="loader-logo" role="img" aria-label="Sergi's Images">
+      <ellipse cx="70" cy="70" rx="52" ry="62" fill="none" stroke="#FBFAF6" stroke-width="4.5"/>
+      <g fill="#FBFAF6" style="font-family:'Playfair Display',Georgia,serif; font-weight:600;">
+        <text x="38" y="100" font-size="86">S</text>
+        <text x="80" y="100" font-size="86">I</text>
+      </g>
+      <g fill="#FBFAF6" style="font-family:'Playfair Display',Georgia,serif; font-weight:500;">
+        <text x="150" y="62" font-size="52" letter-spacing="-0.5">Sergi&#39;s</text>
+        <text x="150" y="118" font-size="52" letter-spacing="-0.5">Images</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-transparent border-b border-transparent">
+  <div class="container-x flex items-center justify-between py-4 md:py-5">
+    <a href="#home" class="flex items-center" aria-label="Sergi's Images home">
+      <svg viewBox="0 0 360 140" class="h-9 md:h-10" role="img" aria-label="Sergi's Images">
+        <ellipse cx="70" cy="70" rx="52" ry="62" fill="none" stroke="#0F1F3D" stroke-width="4.5"/>
+        <g fill="#0F1F3D" style="font-family:'Playfair Display',Georgia,serif; font-weight:600;">
+          <text x="38" y="100" font-size="86">S</text>
+          <text x="80" y="100" font-size="86">I</text>
+        </g>
+        <g fill="#0F1F3D" style="font-family:'Playfair Display',Georgia,serif; font-weight:500;">
+          <text x="150" y="62" font-size="52" letter-spacing="-0.5">Sergi&#39;s</text>
+          <text x="150" y="118" font-size="52" letter-spacing="-0.5">Images</text>
+        </g>
+      </svg>
+    </a>
+    <nav class="hidden md:flex items-center gap-10">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="tel:+17189350002" class="text-[13px] tracking-[0.04em] text-ink-700 hover:text-ink-950 transition-colors font-mono tabular">(718) 935-0002</a>
+      <a href="#contact" class="btn-primary btn-sm">Inquire</a>
+    </div>
+    <!-- Mobile hamburger -->
+    <button id="m-toggle" type="button" aria-label="Open menu" aria-expanded="false" class="md:hidden h-11 w-11 grid place-items-center relative z-[60]">
+      <span class="relative block h-3.5 w-5">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu drawer — MUST be outside navbar to escape the backdrop-filter containing block -->
+<div id="m-menu" class="md:hidden fixed inset-x-0 top-[64px] bottom-0 bg-cream-50 border-t border-ink-900/10 overflow-y-auto z-[45]">
+    <nav class="container-x py-10 flex flex-col">
+      <a href="#home" class="m-link flex items-baseline gap-6 py-5 border-b border-ink-900/10 font-sans font-bold text-ink-950" style="font-size:clamp(1.5rem,6vw,2.5rem); line-height:1; letter-spacing:-.025em;"><span class="font-mono font-medium text-[11px] tabular text-ink-500 mb-1 shrink-0">01</span>Home</a>
+      <a href="#services" class="m-link flex items-baseline gap-6 py-5 border-b border-ink-900/10 font-sans font-bold text-ink-950" style="font-size:clamp(1.5rem,6vw,2.5rem); line-height:1; letter-spacing:-.025em;"><span class="font-mono font-medium text-[11px] tabular text-ink-500 mb-1 shrink-0">02</span>Services</a>
+      <a href="#portfolio" class="m-link flex items-baseline gap-6 py-5 border-b border-ink-900/10 font-sans font-bold text-ink-950" style="font-size:clamp(1.5rem,6vw,2.5rem); line-height:1; letter-spacing:-.025em;"><span class="font-mono font-medium text-[11px] tabular text-ink-500 mb-1 shrink-0">03</span>Portfolio</a>
+      <a href="#about" class="m-link flex items-baseline gap-6 py-5 border-b border-ink-900/10 font-sans font-bold text-ink-950" style="font-size:clamp(1.5rem,6vw,2.5rem); line-height:1; letter-spacing:-.025em;"><span class="font-mono font-medium text-[11px] tabular text-ink-500 mb-1 shrink-0">04</span>About</a>
+      <a href="#contact" class="m-link flex items-baseline gap-6 py-5 border-b border-ink-900/10 font-sans font-bold text-ink-950" style="font-size:clamp(1.5rem,6vw,2.5rem); line-height:1; letter-spacing:-.025em;"><span class="font-mono font-medium text-[11px] tabular text-ink-500 mb-1 shrink-0">05</span>Contact</a>
+
+      <div class="mt-12 flex flex-col gap-3 max-w-md">
+        <div class="eyebrow text-ink-500 mb-2">Visit / Call</div>
+        <a href="tel:+17189350002" class="font-mono text-lead tabular text-ink-950">(718) 935-0002</a>
+        <a href="mailto:info@example.com" class="text-body text-ink-700">info@example.com</a>
+        <p class="text-body text-ink-700">260 Van Brunt St, Brooklyn, NY 11231</p>
+        <p class="text-body text-ink-500">Mon – Fri · 8:00 AM – 5:00 PM</p>
+        <a href="#contact" class="m-link btn-primary mt-6 self-start">Start your project</a>
+      </div>
+    </nav>
+</div>
+
+<!-- ═══════════════════════════════ PAGE WRAPPER ═══════════════════════════════ -->
+<div id="page-container">
+
+<!-- ─── HOME ─── -->
+<main id="home" class="page page-section active" data-page="home">
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-20 md:pt-44 md:pb-28 lg:pt-56 lg:pb-36 overflow-hidden">
+    <div class="absolute inset-0 bg-grid hero-grid opacity-40 pointer-events-none"></div>
+    <div class="container-x relative">
+      <div data-reveal class="flex flex-wrap items-baseline gap-x-5 gap-y-2 mb-14 md:mb-20">
+        <span class="eyebrow text-ink-950">Brooklyn, NY</span>
+        <span class="hidden sm:block h-px w-12 bg-ink-300"></span>
+        <span class="eyebrow text-ink-500">Established <span class="tabular text-ink-950">1991</span></span>
+      </div>
+      <div class="relative grid gap-12 lg:grid-cols-12 lg:gap-x-16 items-start">
+        <!-- Floating image placeholder chip — dead-center between hero columns on desktop -->
+        <div aria-hidden class="pointer-events-none absolute inset-0 hidden lg:grid place-items-center z-20">
+          <div class="inline-flex items-center justify-center px-6 py-4 rounded-xl border border-ink-900/30 bg-zinc-300/80 backdrop-blur-sm font-mono text-[11px] tracking-[0.24em] uppercase font-bold text-ink-950" style="box-shadow:0 2px 8px rgba(10,20,40,.08);">
+            Image Placeholder
+          </div>
+        </div>
+        <div class="lg:col-span-8">
+          <h1 data-reveal style="--rd:120ms" class="h-display-1 text-ink-950">
+            Architectural metal<br>
+            <span class="text-ink-600 font-bold">&amp; glass.</span>
+          </h1>
+          <p data-reveal style="--rd:280ms" class="mt-10 max-w-xl text-lead text-ink-600">
+            Architectural glass &amp; metal — Brooklyn, since 1991.
+          </p>
+          <div data-reveal style="--rd:420ms" class="mt-12 flex flex-wrap items-center gap-5">
+            <a href="#contact" class="btn-primary">Start a project</a>
+            <a href="#services" class="btn-link">See what we do <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div data-reveal="right" style="--rd:380ms" class="lg:col-span-4 lg:pt-4">
+          <div class="eyebrow text-ink-500 mb-5">What we do</div>
+          <ul class="space-y-3 text-body text-ink-800">
+            <li class="flex items-start gap-3"><span class="mt-3 h-px w-3 shrink-0 bg-ink-400"></span>Commercial glazing</li>
+            <li class="flex items-start gap-3"><span class="mt-3 h-px w-3 shrink-0 bg-ink-400"></span>Storefronts &amp; curtain walls</li>
+            <li class="flex items-start gap-3"><span class="mt-3 h-px w-3 shrink-0 bg-ink-400"></span>Custom shower enclosures</li>
+            <li class="flex items-start gap-3"><span class="mt-3 h-px w-3 shrink-0 bg-ink-400"></span>Mirrors, table tops &amp; shelves</li>
+            <li class="flex items-start gap-3"><span class="mt-3 h-px w-3 shrink-0 bg-ink-400"></span>Glass railings &amp; partitions</li>
+            <li class="flex items-start gap-3"><span class="mt-3 h-px w-3 shrink-0 bg-ink-400"></span>Fire-rated systems</li>
+            <li class="flex items-start gap-3"><span class="mt-3 h-px w-3 shrink-0 bg-ink-400"></span>In-house estimating &amp; drafting</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mobile-only image placeholder chip -->
+      <div class="lg:hidden mt-14 flex justify-center">
+        <div aria-hidden class="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-ink-900/30 bg-zinc-300/70 font-mono text-[10px] tracking-[0.24em] uppercase font-bold text-ink-950">
+          Image Placeholder
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS — matches StatsRow.tsx (eyebrow above each, big number, sublabel below) -->
+  <section class="border-t border-ink-900/10 py-10 pb-20 md:pt-12 md:pb-24">
+    <div class="container-x">
+      <div class="grid gap-12 md:grid-cols-4 md:gap-x-10 border-t border-ink-900/15">
+        <div data-reveal class="pt-10">
+          <div class="eyebrow text-ink-500 mb-6"><span class="tabular text-ink-950 mr-3">01</span>Established</div>
+          <div class="font-sans font-bold text-ink-950 leading-none tabular stat" data-count-to="1991" data-no-group="1" style="font-size:clamp(2.25rem,4.5vw,4rem); letter-spacing:-.035em;">0</div>
+          <div class="mt-4 text-body text-ink-600">Red Hook</div>
+        </div>
+        <div data-reveal style="--rd:120ms" class="pt-10">
+          <div class="eyebrow text-ink-500 mb-6"><span class="tabular text-ink-950 mr-3">02</span>Years in trade</div>
+          <div class="font-sans font-bold text-ink-950 leading-none tabular stat" data-count-from-year="1991" data-suffix="+" style="font-size:clamp(2.25rem,4.5vw,4rem); letter-spacing:-.035em;">0</div>
+          <div class="mt-4 text-body text-ink-600">Brooklyn-born</div>
+        </div>
+        <div data-reveal style="--rd:240ms" class="pt-10">
+          <div class="eyebrow text-ink-500 mb-6"><span class="tabular text-ink-950 mr-3">03</span>Red Hook HQ</div>
+          <div class="font-sans font-bold text-ink-950 leading-none tabular stat" data-count-to="14000" data-suffix=" sq ft" style="font-size:clamp(2.25rem,4.5vw,4rem); letter-spacing:-.035em;">0</div>
+          <div class="mt-4 text-body text-ink-600">Two warehouses</div>
+        </div>
+        <div data-reveal style="--rd:360ms" class="pt-10">
+          <div class="eyebrow text-ink-500 mb-6"><span class="tabular text-ink-950 mr-3">04</span>Service offerings</div>
+          <div class="font-sans font-bold text-ink-950 leading-none tabular stat" data-count-to="19" style="font-size:clamp(2.25rem,4.5vw,4rem); letter-spacing:-.035em;">0</div>
+          <div class="mt-4 text-body text-ink-600">In-house</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE — first 14 services -->
+  <section class="hidden md:block border-y border-ink-900/10 py-8 bg-cream-100 overflow-hidden">
+    <div class="marquee whitespace-nowrap">
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Curtain Walls</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Window Walls</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Storefronts</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Exterior Windows</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Skylights</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Canopies</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Exterior Wall Panels</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Metal Panels</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Shower Enclosures</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Mirrors</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Table Tops</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Glass Shelves</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Interior Partitions</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Glass Railings</span>
+      <!-- duplicate -->
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Curtain Walls</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Window Walls</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Storefronts</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Exterior Windows</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Skylights</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Canopies</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Exterior Wall Panels</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Metal Panels</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Shower Enclosures</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Mirrors</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Table Tops</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Custom Glass Shelves</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Interior Partitions</span>
+      <span class="font-sans font-semibold text-ink-950 text-2xl mr-12">Glass Railings</span>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES — 5 featured ServiceCards with full blurbs + "Inquire about this" -->
+  <section class="py-24 md:py-36">
+    <div class="container-x">
+      <div class="grid gap-10 lg:grid-cols-12 items-end mb-16 md:mb-24">
+        <div data-reveal class="lg:col-span-7">
+          <div class="eyebrow text-ink-500 mb-5 eb-row"><span class="eb-num">01</span><span class="eb-rule"></span><span>Capabilities</span></div>
+          <h2 class="h-display-2 text-ink-950">Shower panels to curtain walls.</h2>
+        </div>
+        <div data-reveal style="--rd:200ms" class="lg:col-span-5 lg:col-start-8">
+          <p class="text-lead text-ink-600">Nineteen in-house services — designed, drafted, fabricated, and installed under one roof.</p>
+        </div>
+      </div>
+
+      <div class="grid gap-x-10 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+        <a data-reveal href="#contact" class="cap-card group">
+          <div class="flex items-center justify-between mb-10">
+            <span class="editorial-num text-feature">01</span>
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-ink-400 group-hover:text-ink-950 transition-colors duration-500" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="0.5"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          </div>
+          <h3 class="font-sans font-bold text-ink-950 leading-[1.15] tracking-[-0.02em] mb-4" style="font-size:clamp(1.25rem,2vw,1.625rem)">Curtain Walls</h3>
+          <p class="text-body text-ink-600 leading-relaxed mb-6">Engineered façade systems — non-structural exterior walls of glass, aluminum, and steel for high-rise and mid-rise projects.</p>
+          <div class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span class="cap-arrow">→</span></div>
+        </a>
+        <a data-reveal style="--rd:80ms" href="#contact" class="cap-card group">
+          <div class="flex items-center justify-between mb-10">
+            <span class="editorial-num text-feature">02</span>
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-ink-400 group-hover:text-ink-950 transition-colors duration-500" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18M9 21v-7h6v7"/></svg>
+          </div>
+          <h3 class="font-sans font-bold text-ink-950 leading-[1.15] tracking-[-0.02em] mb-4" style="font-size:clamp(1.25rem,2vw,1.625rem)">Storefronts</h3>
+          <p class="text-body text-ink-600 leading-relaxed mb-6">Custom storefront systems — entrances, vestibules, and display windows built to spec for retail and hospitality.</p>
+          <div class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span class="cap-arrow">→</span></div>
+        </a>
+        <a data-reveal style="--rd:160ms" href="#contact" class="cap-card group">
+          <div class="flex items-center justify-between mb-10">
+            <span class="editorial-num text-feature">03</span>
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-ink-400 group-hover:text-ink-950 transition-colors duration-500" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M8 7l-2 2M8 13l-2 2M16 7l2 2M16 13l2 2"/></svg>
+          </div>
+          <h3 class="font-sans font-bold text-ink-950 leading-[1.15] tracking-[-0.02em] mb-4" style="font-size:clamp(1.25rem,2vw,1.625rem)">Custom Shower Enclosures</h3>
+          <p class="text-body text-ink-600 leading-relaxed mb-6">Frameless, semi-frameless, and traditional enclosures custom-cut and installed to the millimeter.</p>
+          <div class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span class="cap-arrow">→</span></div>
+        </a>
+        <a data-reveal href="#contact" class="cap-card group">
+          <div class="flex items-center justify-between mb-10">
+            <span class="editorial-num text-feature">04</span>
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-ink-400 group-hover:text-ink-950 transition-colors duration-500" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="4" y="3" width="16" height="18" rx="8"/><path d="M8 8c0 4 0 6 2 8"/></svg>
+          </div>
+          <h3 class="font-sans font-bold text-ink-950 leading-[1.15] tracking-[-0.02em] mb-4" style="font-size:clamp(1.25rem,2vw,1.625rem)">Custom Mirrors</h3>
+          <p class="text-body text-ink-600 leading-relaxed mb-6">Bespoke mirrors — wall-to-wall, beveled, antique, gym, or back-painted — cut and finished on site.</p>
+          <div class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span class="cap-arrow">→</span></div>
+        </a>
+        <a data-reveal style="--rd:80ms" href="#contact" class="cap-card group">
+          <div class="flex items-center justify-between mb-10">
+            <span class="editorial-num text-feature">05</span>
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-ink-400 group-hover:text-ink-950 transition-colors duration-500" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 6h18M3 18h18M6 6v12M12 6v12M18 6v12"/></svg>
+          </div>
+          <h3 class="font-sans font-bold text-ink-950 leading-[1.15] tracking-[-0.02em] mb-4" style="font-size:clamp(1.25rem,2vw,1.625rem)">Glass Railings</h3>
+          <p class="text-body text-ink-600 leading-relaxed mb-6">Frameless and channel-mounted glass railings for stairs, balconies, terraces, and pool surrounds.</p>
+          <div class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span class="cap-arrow">→</span></div>
+        </a>
+      </div>
+
+      <div data-reveal class="mt-16 flex justify-center">
+        <a href="#services" class="btn-link">See all <span class="tabular">19</span> services <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WORK WITH US -->
+  <section class="py-24 md:py-32 border-t border-ink-900/10 bg-cream-50">
+    <div class="container-x">
+      <div data-reveal class="eyebrow text-ink-500 mb-6 eb-row"><span class="eb-num">02</span><span class="eb-rule"></span><span>Why work with us</span></div>
+      <div class="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-x-12 mb-16 md:mb-24">
+        <h2 data-reveal style="--rd:120ms" class="lg:col-span-5 h-display-2 text-ink-950">One company, accountable end-to-end.</h2>
+        <div data-reveal="scale" style="--rd:260ms" class="lg:col-span-7 flex items-center justify-center w-full min-h-[280px] sm:min-h-[360px] rounded-2xl border border-ink-900/30 bg-zinc-300/80 eyebrow text-ink-950 font-bold">
+          Image Placeholder
+        </div>
+      </div>
+      <div class="grid gap-x-12 gap-y-12 md:gap-y-14 md:grid-cols-2">
+        <article data-reveal class="border-t border-ink-900/15 pt-7">
+          <div class="flex items-baseline gap-4 mb-4"><span class="editorial-num text-feature tabular">01</span><h3 class="font-sans font-semibold text-ink-950 text-feature">Everything in-house</h3></div>
+          <p class="text-body text-ink-600 leading-relaxed max-w-md">Estimating, drafting, and fabrication — every stage runs through our Red Hook shop.</p>
+        </article>
+        <article data-reveal style="--rd:120ms" class="border-t border-ink-900/15 pt-7">
+          <div class="flex items-baseline gap-4 mb-4"><span class="editorial-num text-feature tabular">02</span><h3 class="font-sans font-semibold text-ink-950 text-feature">Free estimates &amp; shop drawings</h3></div>
+          <p class="text-body text-ink-600 leading-relaxed max-w-md">Our in-house estimating and drafting departments produce coordinated shop drawings at no charge.</p>
+        </article>
+        <article data-reveal class="border-t border-ink-900/15 pt-7">
+          <div class="flex items-baseline gap-4 mb-4"><span class="editorial-num text-feature tabular">03</span><h3 class="font-sans font-semibold text-ink-950 text-feature">Experienced field crews</h3></div>
+          <p class="text-body text-ink-600 leading-relaxed max-w-md">We deliver, set, seal, and clean up — the project leaves ready for the next trade.</p>
+        </article>
+        <article data-reveal style="--rd:120ms" class="border-t border-ink-900/15 pt-7">
+          <div class="flex items-baseline gap-4 mb-4"><span class="editorial-num text-feature tabular">04</span><h3 class="font-sans font-semibold text-ink-950 text-feature">Standing behind the work</h3></div>
+          <p class="text-body text-ink-600 leading-relaxed max-w-md">Same shop, same address since 1991. We answer the phone, walk the job, and stand behind every install long after handover.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT — LocationCard layout -->
+  <section class="py-24 md:py-32 border-t border-ink-900/10">
+    <div class="container-x">
+      <div class="grid gap-10 lg:grid-cols-12 items-end mb-16">
+        <div data-reveal class="lg:col-span-7">
+          <div class="eyebrow text-ink-500 mb-5 eb-row"><span class="eb-num">03</span><span class="eb-rule"></span><span>Visit</span></div>
+          <h2 class="h-display-2 text-ink-950">The Red Hook workshop.</h2>
+        </div>
+        <div data-reveal style="--rd:200ms" class="lg:col-span-5 lg:col-start-8">
+          <p class="text-lead text-ink-600">Walk in during shop hours — or send drawings ahead and we'll have a number for you the next day.</p>
+        </div>
+      </div>
+
+      <div data-reveal="scale" class="grid gap-0 overflow-hidden border-t border-b border-ink-900/15 lg:grid-cols-2">
+        <div class="p-8 md:p-14 lg:p-16">
+          <div class="eyebrow text-ink-500 mb-8"><span class="tabular text-ink-950 mr-3">01</span>Visit the shop</div>
+          <h3 class="font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.025em] mb-8" style="font-size:clamp(1.75rem,3vw,2.5rem)">Red Hook, Brooklyn.</h3>
+          <address class="not-italic space-y-5">
+            <div class="text-feature font-sans font-semibold text-ink-950 leading-tight">260 Van Brunt St<br>Brooklyn, NY 11231</div>
+            <div class="flex flex-col gap-2 pt-4 border-t border-ink-900/10">
+              <a href="tel:+17189350002" class="font-mono text-lead tabular text-ink-950 hover:text-ink-700 transition-colors">(718) 935-0002</a>
+              <a href="mailto:info@example.com" class="text-body text-ink-700 hover:text-ink-950 transition-colors editorial-link self-start">info@example.com</a>
+              <p class="text-body text-ink-500 mt-2">Mon – Fri · 8:00 AM – 5:00 PM</p>
+            </div>
+          </address>
+          <a href="https://maps.google.com/?q=260%20Van%20Brunt%20St%2C%20Brooklyn%2C%20NY" target="_blank" rel="noopener noreferrer" class="mt-10 inline-flex items-center gap-2 eyebrow text-ink-950 editorial-link">Open in Google Maps <span>↗</span></a>
+        </div>
+        <div class="relative min-h-[320px] lg:min-h-[480px] bg-cream-100 border-l border-ink-900/10">
+          <iframe title="Sergi's Images location" src="https://maps.google.com/maps?q=260%20Van%20Brunt%20St%2C%20Brooklyn%2C%20NY&t=&z=15&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 h-full w-full" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative bg-ink-950 text-cream-50 overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-[0.05] pointer-events-none"></div>
+    <div class="container-x py-24 md:py-32 lg:py-40 relative">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-x-16 items-end">
+        <div class="lg:col-span-8">
+          <div data-reveal class="eyebrow text-cream-50/50 mb-8">
+            <span class="text-cream-50 tabular">↗</span>
+            <span class="inline-block mx-3 h-px w-10 align-middle bg-cream-50/30"></span>
+            Start a project
+          </div>
+          <h2 data-reveal style="--rd:120ms; font-size:clamp(2.25rem,5.5vw,5rem);" class="font-sans font-extrabold text-cream-50 leading-[1.0] tracking-[-0.035em]">
+            Let's build something <span class="text-cream-50/60 font-bold">that lasts.</span>
+          </h2>
+        </div>
+        <div class="lg:col-span-4 max-w-md">
+          <p data-reveal style="--rd:240ms" class="text-lead text-cream-50/70">Free estimates and shop drawings, in-house. Tell us what you're building.</p>
+          <div data-reveal style="--rd:360ms" class="mt-10 flex flex-wrap items-center gap-5">
+            <a href="#contact" class="btn-primary !bg-cream-50 !text-ink-950 hover:!bg-cream-100">Inquire now</a>
+            <a href="tel:+17189350002" class="eyebrow text-cream-50/80 hover:text-cream-50 transition-colors font-mono tabular">(718) 935-0002</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── SERVICES ─── -->
+<div class="page" data-page="services">
+<section id="services" class="page-section py-20 md:py-28 pt-[88px]">
+  <div class="container-x">
+    <!-- Services hero -->
+    <div class="grid gap-10 lg:grid-cols-12 items-end mb-20">
+      <div data-reveal class="lg:col-span-7">
+        <div class="eyebrow text-ink-500 mb-5"><span class="tabular mr-3">01</span> Capabilities</div>
+        <h1 class="h-display-1 text-ink-950">Every service we offer.</h1>
+      </div>
+      <div data-reveal style="--rd:200ms" class="lg:col-span-5 lg:col-start-8">
+        <p class="text-lead text-ink-600">Designed, drafted, fabricated, installed — in-house.</p>
+      </div>
+    </div>
+
+    <!-- CapabilityList: text-link filter rail + numbered expandable rows -->
+    <div data-reveal class="flex flex-wrap items-baseline gap-x-8 gap-y-3 pb-10 border-b border-ink-900/10 mb-2" id="svc-filters">
+      <span class="eyebrow text-ink-500 mr-2">Filter</span>
+      <button class="svc-filter active" data-cat="all">All</button>
+      <button class="svc-filter" data-cat="commercial">Commercial Glazing</button>
+      <button class="svc-filter" data-cat="residential">Residential &amp; Custom</button>
+      <button class="svc-filter" data-cat="doors">Doors &amp; Hardware</button>
+      <button class="svc-filter" data-cat="in-house">In-House Services</button>
+    </div>
+
+    <ol id="svc-list">
+      <!-- 1. Curtain Walls -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle group">
+          <div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline">
+            <span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">01</span>
+            <h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Curtain Walls</h3>
+            <span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span>
+            <span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span>
+          </div>
+        </button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Engineered façade systems — non-structural exterior walls of glass, aluminum, and steel for high-rise and mid-rise projects.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 2 -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">02</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Window Walls</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Floor-to-ceiling glazing for multifamily and commercial builds, engineered for thermal performance and clean sight lines.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 3 -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">03</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Storefronts</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Custom storefront systems — entrances, vestibules, and display windows built to spec for retail and hospitality.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 4 -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">04</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Exterior Windows</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">High-performance exterior window systems, from punched openings to ribbon glazing.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 5 -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">05</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Skylights</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Daylighting solutions — fixed, vented, and custom-geometry skylights designed and fabricated in-house.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 6 -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">06</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Canopies</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Glass and metal entrance canopies that frame the arrival experience and protect what matters.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 7 -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">07</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Exterior Wall Panels</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Architectural cladding panels engineered for weather performance and durability.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 8 -->
+      <li class="svc-row" data-cat="commercial">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">08</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Metal Panels</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Commercial Glazing</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Custom architectural metal panel systems — aluminum, stainless, and composite finishes.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 9 Custom Showers -->
+      <li class="svc-row" data-cat="residential">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">09</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Custom Shower Enclosures</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Residential &amp; Custom</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Frameless, semi-frameless, and traditional enclosures custom-cut and installed to the millimeter.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 10 -->
+      <li class="svc-row" data-cat="residential">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">10</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Custom Mirrors</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Residential &amp; Custom</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Bespoke mirrors — wall-to-wall, beveled, antique, gym, or back-painted — cut and finished on site.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 11 -->
+      <li class="svc-row" data-cat="residential">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">11</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Custom Table Tops</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Residential &amp; Custom</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Tempered, low-iron, and patterned glass tops cut to any geometry with polished edges.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 12 -->
+      <li class="svc-row" data-cat="residential">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">12</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Custom Glass Shelves</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Residential &amp; Custom</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Floating shelves, display shelves, and built-ins — clear, satin, or back-painted finishes.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 13 Interior Partitions -->
+      <li class="svc-row" data-cat="residential">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">13</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Interior Partitions</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Residential &amp; Custom</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Office partitions, demountable walls, and clear-division glazing for open floor plans.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 14 Glass Railings -->
+      <li class="svc-row" data-cat="residential">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">14</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Glass Railings</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Residential &amp; Custom</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Frameless and channel-mounted glass railings for stairs, balconies, terraces, and pool surrounds.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 15 Herculite -->
+      <li class="svc-row" data-cat="doors">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">15</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Herculite Doors</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Doors &amp; Hardware</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Heavy tempered-glass entrance doors for retail and lobby spaces, complete with rails and patch fittings.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 16 Fire-Rated -->
+      <li class="svc-row" data-cat="doors">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">16</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Fire-Rated Partitions &amp; Doors</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Doors &amp; Hardware</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">20, 45, 60, and 90-minute rated glazing systems engineered for code compliance and clean aesthetics.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 17 Door Repairs -->
+      <li class="svc-row" data-cat="doors">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">17</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">Door Repairs</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">Doors &amp; Hardware</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">All miscellaneous door service — closers, hinges, rails, glass replacement, hardware swaps.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 18 Estimating -->
+      <li class="svc-row" data-cat="in-house">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">18</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">In-House Estimating</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">In-House Services</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Free, no-obligation estimates from our in-house estimating department — fast, accurate, project-ready.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+      <!-- 19 Drafting -->
+      <li class="svc-row" data-cat="in-house">
+        <button class="svc-toggle"><div class="grid grid-cols-12 gap-4 md:gap-8 items-baseline"><span class="col-span-2 md:col-span-1 editorial-num text-feature md:text-[1.875rem]">19</span><h3 class="col-span-10 md:col-span-7 font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.02em]" style="font-size:clamp(1.25rem,2.5vw,1.875rem)">In-House Drafting</h3><span class="hidden md:block col-span-3 eyebrow text-ink-500 text-right">In-House Services</span><span class="svc-plus hidden md:flex col-span-1 justify-end"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 5v14M5 12h14"/></svg></span></div></button>
+        <div class="svc-body"><div class="grid grid-cols-12 gap-4 md:gap-8 pb-8"><div class="col-span-12 md:col-start-2 md:col-span-7 space-y-5"><p class="text-body text-ink-600 max-w-xl">Free CAD shop drawings produced in-house — coordinated with architects, GCs, and inspectors.</p><a href="#contact" class="inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.18em] font-semibold text-ink-950">Inquire about this <span>→</span></a></div></div></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- PROCESS — 4 steps -->
+<section class="py-24 md:py-32 border-t border-ink-900/10">
+  <div class="container-x">
+    <div class="grid gap-10 lg:grid-cols-12 items-end mb-20">
+      <div data-reveal class="lg:col-span-7">
+        <div class="eyebrow text-ink-500 mb-5 eb-row"><span class="eb-num">02</span><span class="eb-rule"></span><span>Process</span></div>
+        <h2 class="h-display-2 text-ink-950">Estimate. Draft. Fabricate. Install.</h2>
+      </div>
+      <div data-reveal style="--rd:200ms" class="lg:col-span-5 lg:col-start-8">
+        <p class="text-lead text-ink-600">Every project, every stage — worked by the people in this building. It is why our schedules hold and our installs look the way they do.</p>
+      </div>
+    </div>
+    <div class="grid gap-12 md:grid-cols-4 md:gap-x-10">
+      <div data-reveal class="border-t border-ink-900/15 pt-8">
+        <span class="editorial-num text-[2.5rem] md:text-[3rem] leading-none">01</span>
+        <h3 class="mt-6 font-sans font-bold text-ink-950 leading-tight tracking-[-0.02em]" style="font-size:clamp(1.5rem,2vw,1.875rem)">Estimate</h3>
+        <p class="mt-3 text-body text-ink-600 leading-relaxed">Free, no-obligation site walk and detailed take-off from our in-house estimating team.</p>
+      </div>
+      <div data-reveal style="--rd:100ms" class="border-t border-ink-900/15 pt-8">
+        <span class="editorial-num text-[2.5rem] md:text-[3rem] leading-none">02</span>
+        <h3 class="mt-6 font-sans font-bold text-ink-950 leading-tight tracking-[-0.02em]" style="font-size:clamp(1.5rem,2vw,1.875rem)">Draft</h3>
+        <p class="mt-3 text-body text-ink-600 leading-relaxed">Shop drawings coordinated with your architect, GC, and inspectors — produced in-house.</p>
+      </div>
+      <div data-reveal style="--rd:200ms" class="border-t border-ink-900/15 pt-8">
+        <span class="editorial-num text-[2.5rem] md:text-[3rem] leading-none">03</span>
+        <h3 class="mt-6 font-sans font-bold text-ink-950 leading-tight tracking-[-0.02em]" style="font-size:clamp(1.5rem,2vw,1.875rem)">Fabricate</h3>
+        <p class="mt-3 text-body text-ink-600 leading-relaxed">Glass cut, mitered, and finished in our Red Hook shop. Metals welded, anodized, or painted to spec.</p>
+      </div>
+      <div data-reveal style="--rd:300ms" class="border-t border-ink-900/15 pt-8">
+        <span class="editorial-num text-[2.5rem] md:text-[3rem] leading-none">04</span>
+        <h3 class="mt-6 font-sans font-bold text-ink-950 leading-tight tracking-[-0.02em]" style="font-size:clamp(1.5rem,2vw,1.875rem)">Install</h3>
+        <p class="mt-3 text-body text-ink-600 leading-relaxed">Field crews deliver, set, seal, and clean up — the project leaves ready for the next trade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /services page -->
+
+<!-- ─── PORTFOLIO ─── -->
+<div class="page" data-page="portfolio">
+<section id="portfolio" class="page-section py-20 md:py-28 pt-[88px] bg-cream-50 border-y border-ink-900/10">
+  <div class="container-x">
+    <div class="grid gap-10 lg:grid-cols-12 items-end mb-16 md:mb-20">
+      <div data-reveal class="lg:col-span-7">
+        <div class="eyebrow text-ink-500 mb-5 eb-row"><span class="eb-num">01</span><span class="eb-rule"></span><span>Selected work</span></div>
+        <h1 class="h-display-1 text-ink-950">Projects built across New York.</h1>
+      </div>
+      <div data-reveal style="--rd:200ms" class="lg:col-span-5 lg:col-start-8">
+        <p class="text-lead text-ink-600 mb-8">Three decades of installs across New York.</p>
+        <div class="flex items-center justify-center w-full aspect-[16/10] rounded-xl border border-ink-900/30 bg-zinc-300/80 eyebrow text-ink-950 font-bold">Image Placeholder</div>
+      </div>
+    </div>
+
+    <div data-reveal class="flex flex-wrap gap-3 mb-14" id="filter-bar">
+      <button class="filter-chip active" data-filter="all">All Work</button>
+      <button class="filter-chip" data-filter="storefronts">Storefronts</button>
+      <button class="filter-chip" data-filter="curtain-walls">Curtain Walls</button>
+      <button class="filter-chip" data-filter="railings">Glass Railings</button>
+      <button class="filter-chip" data-filter="showers">Showers</button>
+      <button class="filter-chip" data-filter="canopies">Canopies</button>
+      <button class="filter-chip" data-filter="commercial">Commercial</button>
+    </div>
+
+    <div class="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3" id="portfolio-grid">
+      <figure data-reveal class="portfolio-card" data-categories="storefronts"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/Sergis01.jpg" alt="Custom storefront — Brooklyn" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Custom storefront — Brooklyn</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">01</span>· storefronts</div></figcaption></figure>
+      <figure data-reveal style="--rd:60ms" class="portfolio-card" data-categories="commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:3/4"><img src="./public/portfolio/legacy/Sergis02.jpg" alt="Commercial install" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Commercial install</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">02</span>· commercial</div></figcaption></figure>
+      <figure data-reveal style="--rd:120ms" class="portfolio-card" data-categories="commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/3"><img src="./public/portfolio/legacy/Sergis03.jpg" alt="Commercial glazing" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Commercial glazing</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">03</span>· commercial</div></figcaption></figure>
+      <figure data-reveal class="portfolio-card" data-categories="storefronts curtain-walls commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/Sergis04.jpg" alt="Storefront & curtain wall" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Storefront &amp; curtain wall</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">04</span>· storefronts</div></figcaption></figure>
+      <figure data-reveal style="--rd:60ms" class="portfolio-card" data-categories="railings"><div class="img-wrap bg-ink-100" style="aspect-ratio:3/2"><img src="./public/portfolio/legacy/FullSizeRender.jpg" alt="Frameless glass railing" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Frameless glass railing</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">05</span>· railings</div></figcaption></figure>
+      <figure data-reveal style="--rd:120ms" class="portfolio-card" data-categories="railings"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/FullSizeRender1.jpg" alt="Glass railing" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Glass railing</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">06</span>· railings</div></figcaption></figure>
+      <figure data-reveal class="portfolio-card" data-categories="showers"><div class="img-wrap bg-ink-100" style="aspect-ratio:3/4"><img src="./public/portfolio/legacy/IMG_0240-e1450107772891.jpg" alt="Custom shower enclosure" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Custom shower enclosure</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">07</span>· showers</div></figcaption></figure>
+      <figure data-reveal style="--rd:60ms" class="portfolio-card" data-categories="showers"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/3"><img src="./public/portfolio/legacy/IMG_0241-e1450107792537.jpg" alt="Frameless shower" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Frameless shower</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">08</span>· showers</div></figcaption></figure>
+      <figure data-reveal style="--rd:120ms" class="portfolio-card" data-categories="commercial storefronts"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/IMG_2176-00000005-e1450107759998.jpg" alt="Commercial storefront" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Commercial storefront</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">09</span>· commercial</div></figcaption></figure>
+      <figure data-reveal class="portfolio-card" data-categories="canopies storefronts commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:3/4"><img src="./public/portfolio/legacy/IMG_2408-1.jpg" alt="Storefront & canopy" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Storefront &amp; canopy</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">10</span>· canopies</div></figcaption></figure>
+      <figure data-reveal style="--rd:60ms" class="portfolio-card" data-categories="canopies commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/3"><img src="./public/portfolio/legacy/IMG_2409.jpg" alt="Commercial canopy" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Commercial canopy</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">11</span>· canopies</div></figcaption></figure>
+      <figure data-reveal style="--rd:120ms" class="portfolio-card" data-categories="storefronts commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/002.jpg" alt="Storefront install" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Storefront install</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">12</span>· storefronts</div></figcaption></figure>
+      <figure data-reveal class="portfolio-card" data-categories="commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:3/4"><img src="./public/portfolio/legacy/006.jpg" alt="Commercial detail" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Commercial detail</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">13</span>· commercial</div></figcaption></figure>
+      <figure data-reveal style="--rd:60ms" class="portfolio-card" data-categories="storefronts commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/3"><img src="./public/portfolio/legacy/019.jpg" alt="Storefront install" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Storefront install</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">14</span>· storefronts</div></figcaption></figure>
+      <figure data-reveal style="--rd:120ms" class="portfolio-card" data-categories="commercial curtain-walls"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/2015-09-26_0043.jpg" alt="Corner curtain wall" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Corner curtain wall</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">15</span>· curtain walls</div></figcaption></figure>
+      <figure data-reveal class="portfolio-card" data-categories="commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:3/2"><img src="./public/portfolio/legacy/2015-09-26_0044.jpg" alt="Commercial glazing" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Commercial glazing</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">16</span>· commercial</div></figcaption></figure>
+      <figure data-reveal style="--rd:60ms" class="portfolio-card" data-categories="storefronts commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/2015-09-26_0048.jpg" alt="Storefront install" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Storefront install</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">17</span>· storefronts</div></figcaption></figure>
+      <figure data-reveal style="--rd:120ms" class="portfolio-card" data-categories="storefronts commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:3/4"><img src="./public/portfolio/legacy/2015-09-26_0053-1.jpg" alt="Storefront install" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Storefront install</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">18</span>· storefronts</div></figcaption></figure>
+      <figure data-reveal class="portfolio-card" data-categories="storefronts commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/3"><img src="./public/portfolio/legacy/2015-09-26_0055.jpg" alt="Storefront install" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Storefront install</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">19</span>· storefronts</div></figcaption></figure>
+      <figure data-reveal style="--rd:60ms" class="portfolio-card" data-categories="commercial"><div class="img-wrap bg-ink-100" style="aspect-ratio:4/5"><img src="./public/portfolio/legacy/2015-09-27_0019.jpg" alt="Commercial glazing" class="w-full h-full object-cover"></div><figcaption class="mt-4"><div class="font-sans font-semibold text-ink-950 leading-tight">Commercial glazing</div><div class="eyebrow text-ink-500 mt-1"><span class="tabular text-ink-700 mr-2">20</span>· commercial</div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+</div><!-- /portfolio page -->
+
+<!-- ─── ABOUT ─── -->
+<div class="page" data-page="about">
+<section id="about" class="page-section py-20 md:py-28 pt-[88px]">
+  <div class="container-x">
+    <!-- About hero -->
+    <div class="grid gap-10 lg:grid-cols-12 items-end mb-20">
+      <div data-reveal class="lg:col-span-7">
+        <div class="eyebrow text-ink-500 mb-5 eb-row"><span class="eb-num">01</span><span class="eb-rule"></span><span>The Shop</span></div>
+        <h1 class="h-display-1 text-ink-950">Brooklyn-built. Since 1991.</h1>
+      </div>
+      <div data-reveal style="--rd:200ms" class="lg:col-span-5 lg:col-start-8">
+        <p class="text-lead text-ink-600 mb-8">Same shop. Same address. Since 1991.</p>
+        <div class="flex items-center justify-center w-full aspect-[16/10] rounded-xl border border-ink-900/30 bg-zinc-300/80 eyebrow text-ink-950 font-bold">Image Placeholder</div>
+      </div>
+    </div>
+
+    <!-- Story -->
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-x-16 items-start mb-24 md:mb-32">
+      <div data-reveal="left" class="lg:col-span-5">
+        <div class="eyebrow text-ink-500 mb-8 eb-row"><span class="eb-num">01</span><span class="eb-rule"></span><span>Our story</span></div>
+        <h2 class="h-display-2 text-ink-950">Three decades of glass, installed by experts.</h2>
+      </div>
+      <div data-reveal="right" style="--rd:160ms" class="lg:col-span-7 lg:pt-3">
+        <div class="space-y-5 max-w-xl text-body text-ink-700">
+          <p>Sergi's Images Inc. was founded in <span class="tabular">1991</span> by <strong class="text-ink-950">Louis Sergi</strong>, who began glazing at sixteen. He spent the years that followed learning every aspect of the trade — and then opened a shop in Red Hook.</p>
+          <p>The shop is still here. It has since acquired the adjoining 14,000 sq ft warehouse. We specialize in commercial glazing at every scale and residential work of the most exacting kind.</p>
+          <p>What hasn't changed in thirty years: the desire to leave each project completed with the client's utmost satisfaction, ensuring them as a returning customer.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Industries -->
+    <div class="border-t border-ink-900/10 pt-20 md:pt-28 mb-24 md:mb-32 bg-cream-100 -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] py-20 md:py-28">
+      <div data-reveal class="eyebrow text-ink-500 mb-8 eb-row"><span class="eb-num">03</span><span class="eb-rule"></span><span>Who we work with</span></div>
+      <h2 data-reveal style="--rd:120ms" class="font-sans font-bold text-ink-950 leading-[1.05] tracking-[-0.03em] max-w-3xl mb-16 md:mb-24 h-display-2">Built for general contractors, architects, and owners.</h2>
+      <ul class="grid gap-y-8 md:grid-cols-2 lg:grid-cols-3 md:gap-x-12">
+        <li data-reveal class="border-t border-ink-900/15 pt-6">
+          <div class="font-sans font-semibold text-ink-950" style="font-size:1.125rem">Commercial offices</div>
+          <p class="mt-2 text-body text-ink-600 leading-relaxed">Curtain walls, storefronts, lobby glass, partitions.</p>
+        </li>
+        <li data-reveal style="--rd:80ms" class="border-t border-ink-900/15 pt-6">
+          <div class="font-sans font-semibold text-ink-950" style="font-size:1.125rem">Retail &amp; hospitality</div>
+          <p class="mt-2 text-body text-ink-600 leading-relaxed">Storefronts, Herculite doors, custom mirrors.</p>
+        </li>
+        <li data-reveal style="--rd:160ms" class="border-t border-ink-900/15 pt-6">
+          <div class="font-sans font-semibold text-ink-950" style="font-size:1.125rem">Multifamily &amp; residential</div>
+          <p class="mt-2 text-body text-ink-600 leading-relaxed">Window walls, shower enclosures, glass railings.</p>
+        </li>
+        <li data-reveal class="border-t border-ink-900/15 pt-6">
+          <div class="font-sans font-semibold text-ink-950" style="font-size:1.125rem">Restaurants &amp; bars</div>
+          <p class="mt-2 text-body text-ink-600 leading-relaxed">Storefront retrofits, bar mirrors, custom table tops.</p>
+        </li>
+        <li data-reveal style="--rd:80ms" class="border-t border-ink-900/15 pt-6">
+          <div class="font-sans font-semibold text-ink-950" style="font-size:1.125rem">Healthcare</div>
+          <p class="mt-2 text-body text-ink-600 leading-relaxed">Fire-rated systems, hygienic glazing, partitions.</p>
+        </li>
+        <li data-reveal style="--rd:160ms" class="border-t border-ink-900/15 pt-6">
+          <div class="font-sans font-semibold text-ink-950" style="font-size:1.125rem">Institutional</div>
+          <p class="mt-2 text-body text-ink-600 leading-relaxed">Skylights, canopies, code-compliant railings.</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- About Visit -->
+    <div>
+      <div class="grid gap-10 lg:grid-cols-12 items-end mb-12">
+        <div data-reveal class="lg:col-span-7">
+          <div class="eyebrow text-ink-500 mb-5 eb-row"><span class="eb-num">04</span><span class="eb-rule"></span><span>Visit</span></div>
+          <h2 class="h-display-2 text-ink-950">The Red Hook shop.</h2>
+        </div>
+      </div>
+      <div data-reveal="scale" class="grid gap-0 overflow-hidden border-t border-b border-ink-900/15 lg:grid-cols-2">
+        <div class="p-8 md:p-14 lg:p-16">
+          <div class="eyebrow text-ink-500 mb-8"><span class="tabular text-ink-950 mr-3">01</span>Visit the shop</div>
+          <h3 class="font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.025em] mb-8" style="font-size:clamp(1.75rem,3vw,2.5rem)">Red Hook, Brooklyn.</h3>
+          <address class="not-italic space-y-5">
+            <div class="text-feature font-sans font-semibold text-ink-950 leading-tight">260 Van Brunt St<br>Brooklyn, NY 11231</div>
+            <div class="flex flex-col gap-2 pt-4 border-t border-ink-900/10">
+              <a href="tel:+17189350002" class="font-mono text-lead tabular text-ink-950 hover:text-ink-700 transition-colors">(718) 935-0002</a>
+              <a href="mailto:info@example.com" class="text-body text-ink-700 hover:text-ink-950 transition-colors editorial-link self-start">info@example.com</a>
+              <p class="text-body text-ink-500 mt-2">Mon – Fri · 8:00 AM – 5:00 PM</p>
+            </div>
+          </address>
+          <a href="https://maps.google.com/?q=260%20Van%20Brunt%20St%2C%20Brooklyn%2C%20NY" target="_blank" rel="noopener noreferrer" class="mt-10 inline-flex items-center gap-2 eyebrow text-ink-950 editorial-link">Open in Google Maps <span>↗</span></a>
+        </div>
+        <div class="relative min-h-[320px] lg:min-h-[480px] bg-cream-100 border-l border-ink-900/10">
+          <iframe title="Sergi's Images location" src="https://maps.google.com/maps?q=260%20Van%20Brunt%20St%2C%20Brooklyn%2C%20NY&t=&z=15&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 h-full w-full" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /about page -->
+
+<!-- ─── CONTACT ─── -->
+<div class="page" data-page="contact">
+<section id="contact" class="page-section py-20 md:py-28 pt-[88px] bg-cream-50 border-y border-ink-900/10">
+  <div class="container-x">
+    <!-- Contact hero -->
+    <div class="grid gap-10 lg:grid-cols-12 items-end mb-20">
+      <div data-reveal class="lg:col-span-7">
+        <div class="eyebrow text-ink-500 mb-5 eb-row"><span class="eb-num">01</span><span class="eb-rule"></span><span>Get in touch</span></div>
+        <h1 class="h-display-1 text-ink-950">Start a project.</h1>
+      </div>
+      <div data-reveal style="--rd:200ms" class="lg:col-span-5 lg:col-start-8">
+        <p class="text-lead text-ink-600 mb-6">Free estimates. We answer the phone.</p>
+        <div class="flex items-center justify-center w-full aspect-[16/10] rounded-xl border border-ink-900/30 bg-zinc-300/80 eyebrow text-ink-950 font-bold">Image Placeholder</div>
+      </div>
+    </div>
+
+    <!-- ContactInfo + Form -->
+    <div class="grid gap-16 lg:grid-cols-12 lg:gap-x-16">
+      <!-- ContactInfo: numbered list 01-04 -->
+      <ul data-reveal="left" class="lg:col-span-5 border-t border-ink-900/15">
+        <li class="border-b border-ink-900/10">
+          <a href="tel:+17189350002" class="group grid grid-cols-12 gap-4 items-baseline py-8">
+            <span class="col-span-2 editorial-num text-feature">01</span>
+            <div class="col-span-10 md:col-span-8">
+              <div class="eyebrow text-ink-500 mb-2">Call</div>
+              <div class="font-sans font-semibold text-feature text-ink-950 leading-tight group-hover:text-ink-700 transition-colors">(718) 935-0002</div>
+              <div class="mt-2 text-body text-ink-500">Mon – Fri · 8:00 AM – 5:00 PM</div>
+            </div>
+            <span class="hidden md:flex col-span-2 justify-end items-baseline text-ink-300 group-hover:text-ink-950 group-hover:translate-x-1 transition-all duration-500">↗</span>
+          </a>
+        </li>
+        <li class="border-b border-ink-900/10">
+          <a href="mailto:info@example.com" class="group grid grid-cols-12 gap-4 items-baseline py-8">
+            <span class="col-span-2 editorial-num text-feature">02</span>
+            <div class="col-span-10 md:col-span-8">
+              <div class="eyebrow text-ink-500 mb-2">Write</div>
+              <div class="font-sans font-semibold text-feature text-ink-950 leading-tight group-hover:text-ink-700 transition-colors">info@example.com</div>
+              <div class="mt-2 text-body text-ink-500">We reply within one business day.</div>
+            </div>
+            <span class="hidden md:flex col-span-2 justify-end items-baseline text-ink-300 group-hover:text-ink-950 group-hover:translate-x-1 transition-all duration-500">↗</span>
+          </a>
+        </li>
+        <li class="border-b border-ink-900/10">
+          <a href="https://maps.google.com/?q=260%20Van%20Brunt%20St%2C%20Brooklyn%2C%20NY%2011231" target="_blank" rel="noopener noreferrer" class="group grid grid-cols-12 gap-4 items-baseline py-8">
+            <span class="col-span-2 editorial-num text-feature">03</span>
+            <div class="col-span-10 md:col-span-8">
+              <div class="eyebrow text-ink-500 mb-2">Visit</div>
+              <div class="font-sans font-semibold text-feature text-ink-950 leading-tight group-hover:text-ink-700 transition-colors">260 Van Brunt St, Brooklyn, NY 11231</div>
+              <div class="mt-2 text-body text-ink-500">Red Hook, Brooklyn</div>
+            </div>
+            <span class="hidden md:flex col-span-2 justify-end items-baseline text-ink-300 group-hover:text-ink-950 group-hover:translate-x-1 transition-all duration-500">↗</span>
+          </a>
+        </li>
+        <li class="border-b border-ink-900/10">
+          <a href="https://www.instagram.com/sergisimages" target="_blank" rel="noopener noreferrer" class="group grid grid-cols-12 gap-4 items-baseline py-8">
+            <span class="col-span-2 editorial-num text-feature">04</span>
+            <div class="col-span-10 md:col-span-8">
+              <div class="eyebrow text-ink-500 mb-2">Follow</div>
+              <div class="font-sans font-semibold text-feature text-ink-950 leading-tight group-hover:text-ink-700 transition-colors">@sergisimages</div>
+              <div class="mt-2 text-body text-ink-500">Project updates &amp; finished installs</div>
+            </div>
+            <span class="hidden md:flex col-span-2 justify-end items-baseline text-ink-300 group-hover:text-ink-950 group-hover:translate-x-1 transition-all duration-500">↗</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Form -->
+      <div data-reveal="right" style="--rd:160ms" class="lg:col-span-7">
+        <form id="contact-form" class="rounded-2xl border border-ink-900/15 bg-white p-7 md:p-10 shadow-sm space-y-6">
+          <div class="mb-2">
+            <h3 class="font-sans font-bold text-ink-950 h-display-4">Tell us about your project</h3>
+            <p class="mt-2 text-[14px] text-ink-700">Required fields are marked with <span class="text-ink-950">*</span>.</p>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2">
+            <label class="block"><span class="eyebrow text-ink-700 block mb-2">Your name <span class="text-ink-950">*</span></span><input type="text" name="name" required placeholder="John Sergi" class="field" /></label>
+            <label class="block"><span class="eyebrow text-ink-700 block mb-2">Email <span class="text-ink-950">*</span></span><input type="email" name="email" required placeholder="you@company.com" class="field" /></label>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2">
+            <label class="block"><span class="eyebrow text-ink-700 block mb-2">Phone <span class="text-ink-950">*</span></span><input type="tel" name="phone" required placeholder="(718) 555-0123" class="field" /></label>
+            <label class="block">
+              <span class="eyebrow text-ink-700 block mb-2">Service needed</span>
+              <select name="service" class="field">
+                <optgroup label="Commercial Glazing">
+                  <option value="curtain-walls">Curtain Walls</option>
+                  <option value="window-walls">Window Walls</option>
+                  <option value="storefronts">Storefronts</option>
+                  <option value="exterior-windows">Exterior Windows</option>
+                  <option value="skylights">Skylights</option>
+                  <option value="canopies">Canopies</option>
+                  <option value="exterior-wall-panels">Exterior Wall Panels</option>
+                  <option value="metal-panels">Metal Panels</option>
+                </optgroup>
+                <optgroup label="Residential & Custom">
+                  <option value="custom-showers">Custom Shower Enclosures</option>
+                  <option value="custom-mirrors">Custom Mirrors</option>
+                  <option value="custom-table-tops">Custom Table Tops</option>
+                  <option value="custom-glass-shelves">Custom Glass Shelves</option>
+                  <option value="interior-partitions">Interior Partitions</option>
+                  <option value="glass-railings">Glass Railings</option>
+                </optgroup>
+                <optgroup label="Doors & Hardware">
+                  <option value="herculite-doors">Herculite Doors</option>
+                  <option value="fire-rated">Fire-Rated Partitions &amp; Doors</option>
+                  <option value="door-repairs">Door Repairs</option>
+                </optgroup>
+                <optgroup label="In-House Services">
+                  <option value="estimating">In-House Estimating</option>
+                  <option value="drafting">In-House Drafting</option>
+                </optgroup>
+                <option value="other">Something else</option>
+              </select>
+            </label>
+          </div>
+          <label class="block"><span class="eyebrow text-ink-700 block mb-2">Tell us about the project <span class="text-ink-950">*</span></span><textarea name="message" rows="6" required placeholder="Scope, address, timeline, anything we should know…" class="field"></textarea></label>
+          <div class="flex flex-col-reverse md:flex-row md:items-end md:justify-between gap-5 pt-6 border-t border-ink-900/10">
+            <p class="text-[12px] text-ink-600 max-w-sm leading-relaxed">By submitting, you consent to be contacted by Sergi's Images. We don't share your information.</p>
+            <button type="submit" class="btn-primary">Send message</button>
+          </div>
+        </form>
+        <div id="form-success" class="hidden rounded-2xl border border-ink-900/15 bg-white p-12 text-center shadow-sm">
+          <div class="mx-auto h-14 w-14 grid place-items-center rounded-full bg-ink-950 text-cream-50"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <h3 class="mt-6 font-sans font-bold text-ink-950 h-display-4">Message sent.</h3>
+          <p class="mt-3 max-w-md mx-auto text-body text-ink-800">Your mail client should have opened. For anything urgent, call us at <span class="font-mono tabular text-ink-950 font-semibold">(718) 935-0002</span>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact LocationCard at bottom -->
+    <div data-reveal="scale" class="mt-24 grid gap-0 overflow-hidden border-t border-b border-ink-900/15 lg:grid-cols-2">
+      <div class="p-8 md:p-14 lg:p-16 bg-white">
+        <div class="eyebrow text-ink-500 mb-8"><span class="tabular text-ink-950 mr-3">01</span>Visit the shop</div>
+        <h3 class="font-sans font-bold text-ink-950 leading-[1.1] tracking-[-0.025em] mb-8" style="font-size:clamp(1.75rem,3vw,2.5rem)">Red Hook, Brooklyn.</h3>
+        <address class="not-italic space-y-5">
+          <div class="text-feature font-sans font-semibold text-ink-950 leading-tight">260 Van Brunt St<br>Brooklyn, NY 11231</div>
+          <div class="flex flex-col gap-2 pt-4 border-t border-ink-900/10">
+            <a href="tel:+17189350002" class="font-mono text-lead tabular text-ink-950 hover:text-ink-700 transition-colors">(718) 935-0002</a>
+            <a href="mailto:info@example.com" class="text-body text-ink-700 hover:text-ink-950 transition-colors editorial-link self-start">info@example.com</a>
+            <p class="text-body text-ink-500 mt-2">Mon – Fri · 8:00 AM – 5:00 PM</p>
+          </div>
+        </address>
+      </div>
+      <div class="relative min-h-[320px] lg:min-h-[480px] bg-cream-100 border-l border-ink-900/10">
+        <iframe title="Sergi's Images location" src="https://maps.google.com/maps?q=260%20Van%20Brunt%20St%2C%20Brooklyn%2C%20NY&t=&z=15&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 h-full w-full" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /contact page -->
+
+<!-- ─── PRIVACY ─── -->
+<div class="page" data-page="privacy">
+<section id="privacy" class="page-section pt-20 pb-32 md:pt-28 bg-cream-50 border-t border-ink-900/10">
+  <div class="container-x max-w-2xl">
+    <div data-reveal class="eyebrow text-ink-500 mb-10 eb-row"><span class="eb-num">01</span><span class="eb-rule"></span><span>Legal</span></div>
+    <h1 data-reveal style="--rd:120ms" class="h-display-1 text-ink-950 mb-16">Privacy Policy.</h1>
+
+    <div data-reveal style="--rd:240ms" class="space-y-6 text-body text-ink-700">
+      <p>Sergi's Images Inc. ("we," "us," "our") respects your privacy. This page describes what information we collect through this website, how we use it, and the choices you have about it.</p>
+
+      <h2 class="font-sans font-bold text-ink-950 mt-12 mb-4 h-display-4">Information we collect</h2>
+      <p>We collect only the information you voluntarily provide when you submit our contact form: your name, email address, phone number, the service you're interested in, and the message you send us. We do not run advertising trackers or third-party analytics that build profiles of you.</p>
+
+      <h2 class="font-sans font-bold text-ink-950 mt-12 mb-4 h-display-4">How we use it</h2>
+      <p>We use your submitted information only to respond to your project inquiry — by phone, email, or text — and to keep records of our work. We do not sell, rent, or share your information with third parties for their marketing purposes.</p>
+
+      <h2 class="font-sans font-bold text-ink-950 mt-12 mb-4 h-display-4">SMS messaging</h2>
+      <p>By submitting the contact form, you consent to be contacted via SMS from Sergi's Images Inc. Message frequency may vary. Message and data rates may apply. Reply <strong class="text-ink-950">STOP</strong> to opt out at any time. Reply <strong class="text-ink-950">HELP</strong> for assistance.</p>
+
+      <h2 class="font-sans font-bold text-ink-950 mt-12 mb-4 h-display-4">Cookies</h2>
+      <p>We use only essential cookies required for the site to function. We do not use cookies for cross-site tracking or behavioral advertising.</p>
+
+      <h2 class="font-sans font-bold text-ink-950 mt-12 mb-4 h-display-4">Children's privacy</h2>
+      <p>This website is not directed to children under 13, and we do not knowingly collect personal information from children under 13.</p>
+
+      <h2 class="font-sans font-bold text-ink-950 mt-12 mb-4 h-display-4">Contact</h2>
+      <p>Questions? Email <a href="mailto:info@example.com" class="editorial-link text-ink-950 font-semibold">info@example.com</a> or call <a href="tel:+17189350002" class="editorial-link text-ink-950 font-semibold">(718) 935-0002</a>. Or write to us at 260 Van Brunt St, Brooklyn, NY 11231.</p>
+
+      <p class="text-micro text-ink-500 pt-12 mt-12 border-t border-ink-900/10" id="privacy-updated">Last updated: …</p>
+    </div>
+  </div>
+</section>
+</div><!-- /privacy page -->
+
+</div><!-- /page-container -->
+
+<!-- ═══════════════════════════════ FOOTER (always visible) ═══════════════════════════════ -->
+<footer class="relative mt-24 lg:mt-36 border-t border-ink-900/10 bg-cream-50">
+  <div class="container-x pt-20 pb-12 lg:pt-28">
+    <!-- Closing manifesto -->
+    <div class="grid items-end gap-10 lg:grid-cols-12 lg:gap-x-12 mb-16 lg:mb-20">
+      <div data-reveal class="lg:col-span-6">
+        <div class="eyebrow text-ink-500 mb-6">
+          <span class="text-ink-950 tabular">Est.</span>
+          <span class="inline-block mx-3 h-px w-8 align-middle bg-ink-300"></span>
+          1991 · Red Hook, Brooklyn
+        </div>
+        <p class="font-sans font-bold text-ink-950 h-display-2">Architectural glass &amp; metal.</p>
+      </div>
+      <div data-reveal="scale" style="--rd:200ms" class="lg:col-span-6 flex items-center justify-center w-full aspect-[24/9] rounded-2xl border border-ink-900/30 bg-zinc-300/80 eyebrow text-ink-950 font-bold">Image Placeholder</div>
+    </div>
+
+    <!-- Columns -->
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-x-16">
+      <div class="lg:col-span-4 space-y-6">
+        <svg viewBox="0 0 360 140" class="h-10" role="img" aria-label="Sergi's Images">
+          <ellipse cx="70" cy="70" rx="52" ry="62" fill="none" stroke="#0F1F3D" stroke-width="4.5"/>
+          <g fill="#0F1F3D" style="font-family:'Playfair Display',Georgia,serif; font-weight:600;">
+            <text x="38" y="100" font-size="86">S</text>
+            <text x="80" y="100" font-size="86">I</text>
+          </g>
+          <g fill="#0F1F3D" style="font-family:'Playfair Display',Georgia,serif; font-weight:500;">
+            <text x="150" y="62" font-size="52" letter-spacing="-0.5">Sergi&#39;s</text>
+            <text x="150" y="118" font-size="52" letter-spacing="-0.5">Images</text>
+          </g>
+        </svg>
+        <p class="text-body text-ink-600 max-w-sm">Sergi's Images Inc. — full-service architectural metal &amp; glass.</p>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h4 class="eyebrow text-ink-500 mb-5">Navigate</h4>
+        <ul class="space-y-3 font-sans font-semibold text-feature text-ink-950">
+          <li><a href="#home" class="editorial-link hover:text-ink-700 transition-colors">Home</a></li>
+          <li><a href="#services" class="editorial-link hover:text-ink-700 transition-colors">Services</a></li>
+          <li><a href="#portfolio" class="editorial-link hover:text-ink-700 transition-colors">Portfolio</a></li>
+          <li><a href="#about" class="editorial-link hover:text-ink-700 transition-colors">About</a></li>
+          <li><a href="#contact" class="editorial-link hover:text-ink-700 transition-colors">Contact</a></li>
+          <li><a href="#privacy" class="editorial-link hover:text-ink-700 transition-colors">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3 space-y-5">
+        <h4 class="eyebrow text-ink-500">Visit / Call</h4>
+        <address class="not-italic text-body text-ink-700 leading-relaxed">
+          260 Van Brunt St<br>
+          Brooklyn, NY 11231<br>
+          <span class="text-ink-500 text-micro">Red Hook, NYC</span>
+        </address>
+        <div class="flex flex-col gap-1">
+          <a href="tel:+17189350002" class="font-mono text-body tabular text-ink-950 hover:text-ink-700 transition-colors">(718) 935-0002</a>
+          <a href="mailto:info@example.com" class="text-body text-ink-700 hover:text-ink-950 transition-colors">info@example.com</a>
+          <p class="text-micro text-ink-500 mt-1">Mon – Fri · 8:00 AM – 5:00 PM</p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 space-y-5">
+        <h4 class="eyebrow text-ink-500">Follow</h4>
+        <a href="https://www.instagram.com/sergisimages" target="_blank" rel="noopener noreferrer" class="inline-flex items-baseline gap-2 text-body text-ink-700 hover:text-ink-950 transition-colors editorial-link">Instagram <span class="font-mono text-micro text-ink-500 tabular">↗</span></a>
+      </div>
+    </div>
+
+    <div class="mt-20 pt-8 border-t border-ink-900/10 flex flex-col gap-3 md:flex-row md:items-center md:justify-between eyebrow text-ink-500">
+      <p>© <span class="tabular" id="year">2026</span> Sergi's Images, Inc. — Brooklyn, NY</p>
+      <p>Architectural Metals &amp; Glass since <span class="tabular text-ink-700">1991</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── Loader fade-out ───
+  window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('gone'), 350));
+
+  // ─── Scroll reveal ───
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // ─── Stat count-up ───
+  function animateCount(el) {
+    let target = +el.dataset.countTo;
+    if (el.dataset.countFromYear) target = new Date().getFullYear() - +el.dataset.countFromYear;
+    const dur = 1400;
+    const suffix = el.dataset.suffix || '';
+    const noGroup = el.dataset.noGroup === '1';
+    const start = performance.now();
+    const fmt = (v) => { const n = Math.round(v); return (noGroup ? String(n) : n.toLocaleString('en-US')) + suffix; };
+    function tick(t) {
+      const p = Math.min(1, (t - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = fmt(target);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statIO = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { animateCount(e.target); statIO.unobserve(e.target); }
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat').forEach(el => statIO.observe(el));
+
+  // ─── Navbar scroll behavior ───
+  const nav = document.getElementById('navbar');
+  let lastY = 0;
+  let idleTimer = null;
+  function onNavScroll() {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 16);
+    nav.classList.remove('hidden-nav');
+    if (idleTimer) clearTimeout(idleTimer);
+    // Never auto-hide while mobile menu is open
+    if (y > 80 && !document.body.classList.contains('menu-open')) {
+      idleTimer = setTimeout(() => {
+        if (!document.body.classList.contains('menu-open')) nav.classList.add('hidden-nav');
+      }, 2500);
+    }
+    lastY = y;
+  }
+  window.addEventListener('scroll', onNavScroll, { passive: true });
+  document.addEventListener('pointermove', (e) => { if (e.clientY < 80) nav.classList.remove('hidden-nav'); });
+
+  // ─── Services filter ───
+  document.getElementById('svc-filters').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-cat]');
+    if (!btn) return;
+    document.querySelectorAll('#svc-filters .svc-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('#svc-list .svc-row').forEach(row => {
+      row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+    });
+  });
+
+  // ─── Service row expand/collapse ───
+  document.querySelectorAll('#svc-list .svc-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const row = btn.closest('.svc-row');
+      row.classList.toggle('open');
+    });
+  });
+
+  // ─── Portfolio filter ───
+  document.getElementById('filter-bar').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-filter]');
+    if (!btn) return;
+    document.querySelectorAll('#filter-bar .filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('#portfolio-grid figure').forEach(card => {
+      const cats = (card.dataset.categories || '').split(' ');
+      const show = (f === 'all' || cats.includes(f));
+      if (show) { card.style.display = ''; requestAnimationFrame(() => card.classList.remove('is-out')); }
+      else { card.classList.add('is-out'); setTimeout(() => { card.style.display = 'none'; }, 360); }
+    });
+  });
+
+  // ─── Contact form ───
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(e.target);
+    const subject = `New inquiry — ${d.get('service')}`;
+    const body = [
+      `Name: ${d.get('name')}`,
+      `Email: ${d.get('email')}`,
+      `Phone: ${d.get('phone')}`,
+      `Service: ${d.get('service')}`,
+      '',
+      'Message:',
+      d.get('message'),
+    ].join('\n');
+    window.location.href = `mailto:info@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setTimeout(() => {
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+    }, 400);
+  });
+
+  // ─── PAGE ROUTER ───
+  // Each .page is shown one at a time. Nav links + any in-page link to
+  // #home / #services / #portfolio / #about / #contact / #privacy
+  // is intercepted and switches the visible page instead of scrolling.
+  const VALID_PAGES = ['home','services','portfolio','about','contact','privacy'];
+  const navLinks = document.querySelectorAll('header nav .nav-link');
+
+  function showPage(name, opts = {}) {
+    if (!VALID_PAGES.includes(name)) name = 'home';
+    document.querySelectorAll('.page').forEach(p => {
+      p.classList.toggle('active', p.dataset.page === name);
+    });
+    // Update active nav state
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + name));
+    // Scroll to top of new page
+    if (!opts.skipScroll) window.scrollTo({ top: 0, behavior: 'instant' });
+    // Update URL hash without firing hashchange recursion
+    if (location.hash.slice(1) !== name) {
+      history.pushState({ page: name }, '', '#' + name);
+    }
+    // Re-run scroll-reveal observation for the now-visible page (elements
+    // hidden via display:none never trigger IntersectionObserver, so we
+    // re-observe after reveal).
+    document.querySelectorAll('.page.active [data-reveal]').forEach(el => {
+      if (!el.classList.contains('in')) io.observe(el);
+    });
+    // Re-trigger stats count for any stat now visible
+    document.querySelectorAll('.page.active .stat').forEach(el => {
+      if (el.textContent === '0' || +el.textContent === 0) statIO.observe(el);
+    });
+  }
+
+  // Intercept every internal hash link
+  document.body.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const target = a.getAttribute('href').slice(1).split('?')[0]; // ignore ?service= suffix
+    if (VALID_PAGES.includes(target)) {
+      e.preventDefault();
+      showPage(target);
+    }
+  });
+
+  // Back/forward navigation
+  window.addEventListener('popstate', () => {
+    const hash = location.hash.slice(1);
+    showPage(VALID_PAGES.includes(hash) ? hash : 'home', { skipScroll: false });
+  });
+
+  // Boot: show page from URL hash, else home
+  const initial = location.hash.slice(1);
+  if (VALID_PAGES.includes(initial) && initial !== 'home') {
+    showPage(initial, { skipScroll: true });
+  } else {
+    showPage('home', { skipScroll: true });
+  }
+
+  // ─── Year + privacy "Last updated" date ───
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const pu = document.getElementById('privacy-updated');
+  if (pu) pu.textContent = 'Last updated: ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // ─── Mobile menu drawer ───
+  const mToggle = document.getElementById('m-toggle');
+  const mMenu = document.getElementById('m-menu');
+  let mOpen = false;
+
+  function setMobileOpen(open) {
+    mOpen = open;
+    mToggle.classList.toggle('is-open', open);
+    mMenu.classList.toggle('is-open', open);
+    document.body.classList.toggle('menu-open', open);
+    document.documentElement.classList.toggle('menu-lock', open);
+    mToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    mToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // Keep nav visible while menu open (cancel any pending idle-hide)
+    if (open) {
+      nav.classList.remove('hidden-nav');
+      if (idleTimer) { clearTimeout(idleTimer); idleTimer = null; }
+    }
+  }
+  mToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMobileOpen(!mOpen);
+  });
+  // Close on link tap
+  document.querySelectorAll('.m-link').forEach(a => a.addEventListener('click', () => setMobileOpen(false)));
+  // Close on Escape
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mOpen) setMobileOpen(false); });
+  // Auto-close when resizing to desktop
+  window.addEventListener('resize', () => { if (window.innerWidth >= 768 && mOpen) setMobileOpen(false); });
+</script>
+
+</body>
+</html>
